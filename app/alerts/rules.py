@@ -1,14 +1,16 @@
 class Rule:
-    def __init__(self, name, condition_fn, severity="INFO", alert_level=0, type="KEYWORD ERROR", category="SYSTEM PROBLEM"):
+    def __init__(self, name, condition_fn, severity="INFO", alert_level=0, type="KEYWORD ERROR", category="SYSTEM PROBLEM", cooldown=10):
         self.name = name
         self.condition_fn = condition_fn # each rules has their own way to check if an error occured
         self.severity = severity
         self.alert_level =  alert_level
         self.category = category
         self.type = type
+        self.cooldown = cooldown
 
     def matches(self, event: dict)-> bool:
         return self.condition_fn(event)
+    
 
 RULES = [
 

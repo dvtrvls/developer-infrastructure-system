@@ -9,7 +9,7 @@ class LogWatcher:
     def watch_log(self):
         if not os.path.exists(self.filepath):
             open(self.filepath, "w").close()
-        file = open(self.filepath, "r")
+        file = open(self.filepath, "r", encoding="utf-8")
         file.seek(0, 2)
         last_pos = file.tell()
         while True:
@@ -17,8 +17,28 @@ class LogWatcher:
                 print(f"File {self.filepath} deleted! Recreating ...")
                 open(self.filepath, "w").close()   
             file.seek(last_pos)
-            for line in file:
-                yield {"source": os.path.basename(self.filepath), "raw_line": line.strip(), "timestamp": datetime.now().isoformat()}
-            last_pos = file.tell()
+            chunk = file.read()
+            if chunk:    
+                last_pos = file.tell()
+                lines = chunk.splitlines()     
+                for line in lines:
+                    line = line.strip()
+                    if line:              
+                        yield {
+                            "source": os.path.basename(self.filepath),
+                            "raw_line": line,
+                            "timestamp": datetime.now().isoformat()
+                        }
+                
+
             time.sleep(self.interval)
+
+
+
+
+
+
+
+
+
 
