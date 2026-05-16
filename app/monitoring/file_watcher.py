@@ -3,7 +3,7 @@ import time
 from datetime import datetime
 
 class LogWatcher:
-    def __init__(self, filepath:str, interval:int = 1)-> dict:
+    def __init__(self, filepath:str, interval:int = 1):
         self.filepath = filepath
         self.interval = interval
     def watch_log(self):
