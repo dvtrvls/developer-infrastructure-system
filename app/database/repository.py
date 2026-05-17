@@ -37,7 +37,7 @@ class AlertRepository:
         rows = cursor.fetchall()
         conn.close()
         return [dict(row) for row in rows]
-    def get_reccent(self, limit:int =50)-> list:
+    def get_recent(self, limit:int =50)-> list:
         conn = get_connections()
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM alerts ORDER BY timestamp DESC LIMIT ?", 
