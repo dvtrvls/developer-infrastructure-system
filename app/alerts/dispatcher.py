@@ -9,8 +9,6 @@ class AlertDispatcher:
     def __init__(self, max_logs=100):
         self.logs = deque(maxlen=max_logs)
         
-
-
     def dispatch(self, alert: dict):
         rule_name = alert["rule_name"]
         severity = alert["severity"]

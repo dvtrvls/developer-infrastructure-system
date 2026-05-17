@@ -6,9 +6,8 @@ class  EventRouter:
 
     def process(self, event:dict)->dict:
         event_type = event.get("event_type")
-
+        
         if event_type == "metric":
             return event
-        
         return self.log_parser.parse(event)
         
