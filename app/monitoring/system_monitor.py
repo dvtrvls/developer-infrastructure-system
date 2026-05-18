@@ -13,7 +13,7 @@ class SystemMonitor:
             "cpu":psutil.cpu_percent(interval=1),
             "memory": psutil.virtual_memory().percent,
             "disk": psutil.disk_usage("/").percent,
-            "timestamps": datetime.now().isoformat()
+            "timestamp": datetime.now().isoformat()
         }
     def watch(self):
         while True:

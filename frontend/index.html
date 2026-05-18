@@ -28,6 +28,7 @@
                 live
             </div>
         </div>
+
         <!--Metrics-->
         <div class="metric-grid">
             <div class="metric-card">
@@ -57,7 +58,7 @@
                 </div>
                 <div class="metric-status" id="disk-status">loading ...</div>
             </div>
-            <div class="metric-card">
+            <div class="metric-card" id="metric-card-alert">
                 <div class="metric-label">Alert Today</div>
                 <div class="metric-value" id="alert-count"></div>
                  <div class="metric-status" id="alert-critical">loading ...</div>
@@ -66,13 +67,123 @@
         </div>
 
 
-
-
-        </div>
-
         <!--Panels-->
 
+        <div class="panel-grid">
+
+            <div class="panel">
+
+                <div class="panel-header">
+                    <div class="panel-title">Recent Alerts</div>
+                    <div class="panel-count" id="alert-total">0</div>
+                </div>
+
+                <div class="alert-list" id="alert-list">
+                    <div class="loading-text">Loading Alerts ...</div>
+
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-title">Alert Breakdown</div>
+                </div>
+                
+                <div class="breakdown-list">
+                    <div class="breakdown-row">
+                        <div class="breakdown-label">
+                            <div class="breakdown-dot dot-critical"></div>
+                            Critical
+                        </div>
+                        <div class="breakdown-value critical-text" id="count-critical">0</div>
+                    </div>
+
+                     <div class="breakdown-row">
+                        <div class="breakdown-label">
+                            <div class="breakdown-dot dot-warning"></div>
+                            Warning
+                        </div>
+                        <div class="breakdown-value warning-text" id="count-warning">0</div>
+                    </div>
+
+                     <div class="breakdown-row">
+                        <div class="breakdown-label">
+                            <div class="breakdown-dot dot-info"></div>
+                            Info
+                        </div>
+                        <div class="breakdown-value info-text" id="count-info">0</div>
+                    </div>
+
+                    <div class="breakdown-row">
+                        <div class="breakdown-label">
+                            <div class="breakdown-dot dot-error"></div>
+                            Error
+                        </div>
+                        <div class="breakdown-value error-text" id="count-error">0</div>
+                    </div>
+
+                </div>
+            </div>
+        
+        </div>
+
         <!--Log Feed-->
+
+        <div class="log-panel">
+            <div class="panel-header">
+                <div class="panel-title">Live Log Feed</div>
+                <div class="log-controls">
+                    <select id="log-filter" class="log-select">
+                        <option value="all">all</option>
+                        <option value="CRITICAL">critical</option>
+                        <option value="WARNING">warning</option>
+                        <option value="ERROR">error</option>
+                        <option value="INFO">info</option>
+                    </select>
+                    <div class="clear-btn" onclick="clearLogs()">clear</div>
+                </div>
+            </div>
+
+            <div class="log-feed" id="log-feed">
+                <div class="loading-text">waiting for logs</div>
+
+
+                  <div class="log-entry">
+    <span class="log-time">23:10</span>
+    <span class="log-sev-INFO">[INFO]</span>
+    <span class="log-message">System check · Monitor · All good</span>
+  </div>
+
+  <div class="log-entry">
+    <span class="log-time">23:11</span>
+    <span class="log-sev-WARNING">[WARNING]</span>
+    <span class="log-message">CPU Usage · Server-1 · High load detected</span>
+  </div>
+
+  <div class="log-entry">
+    <span class="log-time">23:12</span>
+    <span class="log-sev-ERROR">[ERROR]</span>
+    <span class="log-message">Database · DB-Cluster · Connection timeout</span>
+  </div>
+
+  <div class="log-entry">
+    <span class="log-time">23:13</span>
+    <span class="log-sev-CRITICAL">[CRITICAL]</span>
+    <span class="log-message">Auth Service · API-Gateway · Token validation failed</span>
+  </div>
+
+  <div class="log-entry">
+    <span class="log-time">23:14</span>
+    <span class="log-sev-INFO">[INFO]</span>
+    <span class="log-message">Scheduler · JobRunner · Task completed successfully</span>
+  </div>
+            </div>
+        </div>
+
+
+
+
+
     </div>
 
 
