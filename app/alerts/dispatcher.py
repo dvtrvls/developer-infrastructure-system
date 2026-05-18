@@ -44,7 +44,7 @@ class AlertDispatcher:
 
         style = styles.get(severity, "white")
         if alert['is_frequent']:
-            console.print(["FREQUENT ERROR DETECTED"], style=styles["CRITICAL"])
+            console.print("[FREQUENT (APPEARED >25 TIMES FROM THE LAST 100 LOG) LOG DETECTED]", style=styles["CRITICAL"])
 
         console.print(
             f"[ALERT] [{severity}] {rule_name} | {source} | {message} | {timestamp}",

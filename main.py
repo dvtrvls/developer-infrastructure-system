@@ -7,6 +7,7 @@ from app.monitoring.system_monitor import SystemMonitor
 from app.database.models import initialize_db
 from app.database.repository import AlertRepository
 from app.api.server import app as api_app
+
 import threading
 import uvicorn
 

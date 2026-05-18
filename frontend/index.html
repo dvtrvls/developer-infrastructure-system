@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevInfra Monitor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+JP:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!--Top Bar-->
+        <div class="topbar">
+            <div class="topbar-left">
+                <div class="logo">
+                    <span>D</span>
+                </div>    
+                <div>
+                    <div class="app-title">DevInfra Monitor</div>
+                    <div class="app-subtitle">developer infrastructure system</div>
+                </div>
+            </div>
+            <div class="status-badge">
+                <div class="status-dot"></div>
+                live
+            </div>
+        </div>
+        <!--Metrics-->
+        <div class="metric-grid">
+            <div class="metric-card">
+
+                <div class="metric-label">CPU</div>
+                <div class="metric-value skeleton" id="cpu-value">%</div>
+                <div class="metric-bar">
+                    <div class="metric-bar-fill" id="cpu-bar"></div>
+                </div>
+                <div class="metric-status" id="cpu-status">loading ...</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-label">Memory</div>
+                <div class="metric-value skeleton" id="memory-value">%</div>
+                <div class="metric-bar">
+                    <div class="metric-bar-fill" id="memory-bar"></div>
+                </div>
+                <div class="metric-status" id="memory-status">loading ...</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-label">Disk</div>
+                 <div class="metric-value skeleton" id="disk-value">%</div>
+                <div class="metric-bar">
+                    <div class="metric-bar-fill" id="disk-bar"></div>
+                </div>
+                <div class="metric-status" id="disk-status">loading ...</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Alert Today</div>
+                <div class="metric-value" id="alert-count"></div>
+                 <div class="metric-status" id="alert-critical">loading ...</div>
+            </div>
+
+        </div>
+
+
+
+
+        </div>
+
+        <!--Panels-->
+
+        <!--Log Feed-->
+    </div>
+
+
+    <script src="./js/app.js"></script>
+</body>
+</html>
