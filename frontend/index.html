@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+JP:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="static/css/style.css">
 </head>
 <body>
     <div class="dashboard">
@@ -23,10 +23,13 @@
                     <div class="app-subtitle">developer infrastructure system</div>
                 </div>
             </div>
-            <div class="status-badge">
-                <div class="status-dot"></div>
-                live
-            </div>
+           <div class="topbar-right" style="display:flex;align-items:center;gap:12px;">
+                <div class="status-badge">
+                    <div class="status-dot"></div>
+                    live
+                </div>
+                <a href="/logout" class="logout-btn">logout</a>
+            </div>      
         </div>
 
         <!--Metrics-->
@@ -146,47 +149,11 @@
 
             <div class="log-feed" id="log-feed">
                 <div class="loading-text">waiting for logs</div>
-
-
-                  <div class="log-entry">
-    <span class="log-time">23:10</span>
-    <span class="log-sev-INFO">[INFO]</span>
-    <span class="log-message">System check · Monitor · All good</span>
-  </div>
-
-  <div class="log-entry">
-    <span class="log-time">23:11</span>
-    <span class="log-sev-WARNING">[WARNING]</span>
-    <span class="log-message">CPU Usage · Server-1 · High load detected</span>
-  </div>
-
-  <div class="log-entry">
-    <span class="log-time">23:12</span>
-    <span class="log-sev-ERROR">[ERROR]</span>
-    <span class="log-message">Database · DB-Cluster · Connection timeout</span>
-  </div>
-
-  <div class="log-entry">
-    <span class="log-time">23:13</span>
-    <span class="log-sev-CRITICAL">[CRITICAL]</span>
-    <span class="log-message">Auth Service · API-Gateway · Token validation failed</span>
-  </div>
-
-  <div class="log-entry">
-    <span class="log-time">23:14</span>
-    <span class="log-sev-INFO">[INFO]</span>
-    <span class="log-message">Scheduler · JobRunner · Task completed successfully</span>
-  </div>
             </div>
         </div>
-
-
-
-
-
     </div>
 
 
-    <script src="./js/app.js"></script>
+    <script src="static/js/app.js"></script>
 </body>
 </html>

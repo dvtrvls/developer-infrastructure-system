@@ -64,7 +64,9 @@ function animateValue(el, start, end, duration = 500) {
 async function fetchMetrics()
 {
     try{
-        const response = await fetch(`${API}/metrics/current`)
+        const response = await fetch(`${API}/metrics/current`,{
+    credentials: 'include'
+})
         const data = await response.json()
         
         updateMetricCard("cpu-value", "cpu-bar", "cpu-status", data.cpu, "CPU",0)
@@ -124,7 +126,9 @@ async function fetchAlerts()
 {
     try
     {
-        const response = await fetch(`${API}/alerts/recent?limit=6`)
+        const response = await fetch(`${API}/alerts/recent?limit=6`,  {
+    credentials: 'include'
+})
         const data = await response.json()
 
         const list = document.getElementById("alert-list")
@@ -160,7 +164,9 @@ async function fetchAlerts()
 
 async function fetchStats() {
     try {
-        const response = await fetch(`${API}/alerts/stats`)
+        const response = await fetch(`${API}/alerts/stats`,  {
+    credentials: 'include'
+})
         const data = await response.json()
 
         const bySev = data.by_severity
@@ -177,19 +183,6 @@ async function fetchStats() {
     }
 }
 
-
-fetchMetrics()
-setInterval(fetchMetrics, 3000)
-fetchAlerts()
-fetchStats()
-setInterval(fetchAlerts, 5000)
-setInterval(fetchStats, 5000)
-
-
-fetchLogFeed()
-setInterval(fetchLogFeed, 3000)
-
-let lastAlertId = 0;
 
 function formatTime(timestamp)
 {
@@ -213,23 +206,30 @@ function buildLogEntry(alert)
     return entry
 }
 
+
 function clearLogs() {
     const feed = document.getElementById("log-feed")
     feed.innerHTML = `<div class="loading-text">cleared · waiting for new logs...</div>`
     lastAlertId = 0
 }
+
+
+
+
 async function fetchLogFeed()
 {
     try
     {
         const filter = document.getElementById("log-filter").value
-        let url =  `${API}/alerts/recent?liit=50`
+        let url =  `${API}/alerts/recent?limit=50`
         if (filter !== "all")
             {
                 url = `${API}/alerts/severity/${filter}`
             }
 
-        const response = await fetch(url)
+        const response = await fetch(url,  {
+    credentials: 'include'
+})
         const data = await response.json()
         
         const feed = document.getElementById("log-feed")
@@ -237,15 +237,15 @@ async function fetchLogFeed()
         const newAlerts = data.alerts.filter(a => a.id > lastAlertId)
 
         if (data.alerts.length === 0) {
-                list.innerHTML = `
-                    <div style="text-align:center; padding: 2rem 0; color: #475569;">
-                        <div style="font-size: 24px; margin-bottom: 8px;">✓</div>
-                        <div style="font-size: 13px;">no alerts fired yet</div>
-                        <div style="font-size: 11px; margin-top: 4px;">system is healthy</div>
-                    </div>
-                `
-                return
-            }
+            feed.innerHTML = `
+                <div style="text-align:center; padding: 2rem 0; color: #475569;">
+                    <div style="font-size: 24px; margin-bottom: 8px;">✓</div>
+                    <div style="font-size: 13px;">no alerts fired yet</div>
+                    <div style="font-size: 11px; margin-top: 4px;">system is healthy</div>
+                </div>
+            `
+            return
+        }
         if (lastAlertId === 0)
             {
                 feed.innerHTML = ""
@@ -284,7 +284,9 @@ async function checkConnection() {
     const badge = document.querySelector(".status-badge")
 
     try {
-        await fetch(`${API}/health`)
+        await fetch(`${API}/health`,  {
+    credentials: 'include'
+})
         dot.style.background = "#4ade80"
         badge.style.color = "#4ade80"
         badge.style.borderColor = "#166534"
@@ -297,6 +299,16 @@ async function checkConnection() {
     }
 }
 
-checkConnection()
-setInterval(checkConnection, 10000)
+let lastAlertId = 0
 
+fetchMetrics()
+fetchAlerts()
+fetchStats()
+fetchLogFeed()
+checkConnection()
+
+setInterval(fetchMetrics, 3000)
+setInterval(fetchAlerts, 5000)
+setInterval(fetchStats, 5000)
+setInterval(fetchLogFeed, 3000)
+setInterval(checkConnection, 10000)

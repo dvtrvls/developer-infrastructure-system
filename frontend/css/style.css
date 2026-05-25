@@ -507,3 +507,18 @@ body
 .log-feed::-webkit-scrollbar-thumb:hover {
     background: #475569;
 }
+
+.logout-btn {
+    font-size: 12px;
+    color: #64748b;
+    text-decoration: none;
+    padding: 4px 10px;
+    border: 1px solid #2d3348;
+    border-radius: 6px;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.logout-btn:hover {
+    color: #94a3b8;
+    border-color: #475569;
+}
